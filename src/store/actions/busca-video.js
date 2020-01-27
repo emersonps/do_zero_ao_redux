@@ -1,8 +1,8 @@
 import youtubeSearch from 'youtube-api-v3-search'
-import YTAPI from './../../api'
-import API_KEY from '../../api';
-
-const API_KEY = YTAPI
+import YTApi from './../../api'
+// import {dispatch} from 'rxjs/internal/observable/range';
+// import API_KEY from '../../api'
+const API_KEY = YTApi
 
 //busca video 
 //inicia bucas
@@ -10,7 +10,7 @@ const API_KEY = YTAPI
     // ...retorne o erro
 
 export const buscaVideoInicio = () => {
-    return dispatch => {
+    return{
         type: 'BUSCA_VIDEO_INICIO',
         carregando: true,
         erro: false
@@ -18,11 +18,11 @@ export const buscaVideoInicio = () => {
 }
 
 export const buscaVideo = (termo) => {
-    return dispatch{
+    return dispatch => {
         dispatch(buscaVideoInicio())
         youtubeSearch(API_KEY,{q:termo})
             .then((data) => dispatch(buscaVideoSucesso(data.items)))
-            .catch((data) => dispatch(buscaVidelErro()))
+            .catch((data) => dispatch(buscaVideoErro()))
     }
 }
 

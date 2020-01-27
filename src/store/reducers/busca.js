@@ -1,6 +1,6 @@
-import { Actions } from "semantic-react"
+// import { Actions } from "semantic-react"
 
-const INITIAL_STATE ={
+const INITIAL_STATE = {
     videos: [],
     carregando: false,
     erro: false
